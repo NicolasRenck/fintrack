@@ -21,6 +21,10 @@ Senha: demofintrack123
 
 ## Screenshots
 
+**Login**
+
+![Login](frontend/assets/screenshots/login.png)
+
 **Dashboard**
 
 ![Dashboard](frontend/assets/screenshots/dashboard.png)
