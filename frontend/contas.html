@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack — Contas Agendadas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="app-page">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">FT</div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" title="Dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+            </a>
+            <a href="transacoes.html" class="nav-item" title="Transações">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </a>
+            <a href="contas.html" class="nav-item active" title="Contas Agendadas">
+                <i class="fa-solid fa-calendar-check"></i>
+            </a>
+            <a href="categorias.html" class="nav-item" title="Categorias">
+                <i class="fa-solid fa-tags"></i>
+            </a>
+        </nav>
+        <div class="sidebar-bottom">
+            <button class="nav-item" onclick="logout()" title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="dashboard-header">
+            <div>
+                <h1 class="greeting">Contas agendadas</h1>
+                <p class="greeting-sub">Gerencie suas contas a pagar e receber</p>
+            </div>
+            <button class="btn-new" onclick="abrirModal()">
+                <i class="fa-solid fa-plus"></i> Nova conta
+            </button>
+        </div>
+
+        <div class="filtros-row">
+            <select id="filtro-status" class="mes-select">
+                <option value="">Todas</option>
+                <option value="false">Pendentes</option>
+                <option value="true">Pagas</option>
+            </select>
+            <select id="filtro-tipo" class="mes-select">
+                <option value="">Todos os tipos</option>
+                <option value="receita">Receitas</option>
+                <option value="despesa">Despesas</option>
+            </select>
+        </div>
+
+        <div class="card" style="margin-top: 16px;">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Vencimento</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-body">
+                    <tr><td colspan="7" class="empty">Carregando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div class="modal-overlay" id="modal" onclick="fecharModalFora(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span class="modal-title" id="modal-title">Nova conta</span>
+                <button class="modal-close" onclick="fecharModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <input type="hidden" id="conta-id" />
+
+            <div class="form-group">
+                <label>Descrição</label>
+                <input type="text" id="descricao" placeholder="Ex: Aluguel, Internet..." />
+            </div>
+            <div class="form-group">
+                <label>Valor</label>
+                <input type="number" id="valor" placeholder="0,00" step="0.01" />
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select id="tipo">
+                    <option value="despesa">Despesa</option>
+                    <option value="receita">Receita</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Categoria</label>
+                <select id="categoria"></select>
+            </div>
+            <div class="form-group">
+                <label>Vencimento</label>
+                <input type="date" id="vencimento" />
+            </div>
+            <div class="form-group">
+                <label>Recorrência mensal</label>
+                <select id="recorrente">
+                    <option value="false">Não</option>
+                    <option value="true">Sim</option>
+                </select>
+            </div>
+
+            <div class="modal-error" id="modal-error"></div>
+            <button class="btn-primary" onclick="salvarConta()">Salvar</button>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/contas.js"></script>
+
+</body>
+</html>

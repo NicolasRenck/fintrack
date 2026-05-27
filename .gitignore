@@ -1,0 +1,54 @@
+# Ambiente virtual
+venv/
+env/
+.venv/
+
+# Variáveis de ambiente
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Django
+*.log
+db.sqlite3
+staticfiles/
+media/
+
+# Migrations    
+# */migrations/
+
+# Docker
+# docker-compose.override.yml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credenciais
+credentials.json
+*.pem
+*.key
+
+# Coverage
+.coverage
+htmlcov/
+
+# Pytest
+.pytest_cache/
+
+# Build
+dist/
+build/
+*.egg-info/

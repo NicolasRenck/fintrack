@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack — Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos para o rodapé e o efeito hover suave */
+        .login-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            font-size: 0.8rem; /* Fonte menor */
+        }
+        .login-footer a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: opacity 0.3s ease, color 0.3s ease; /* Hover suave */
+        }
+        .login-footer a:hover {
+            opacity: 1;
+            color: #00bcd4; /* Cor opcional para o hover, mude para combinar com seu layout */
+        }
+        .login-footer .divider {
+            margin: 0 8px;
+            opacity: 0.4;
+        }
+        /* Garante que o body consiga posicionar o footer no fundo */
+        body.login-page {
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="login-page">
+
+    <div class="wallet-container">
+        <img src="assets/wallet.png" alt="wallet" class="wallet-img" />
+
+        <div class="wallet-form">
+            <div class="login-header">
+                <h1 class="logo">FinTrack</h1>
+                <p>Gerencie suas finanças com controle total</p>
+            </div>
+
+            <div class="login-error" id="login-error">
+                Usuário ou senha incorretos.
+            </div>
+
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" placeholder="Digite seu usuário" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Digite sua senha" />
+            </div>
+
+            <button class="btn-primary" id="btn-login">Entrar</button>
+        </div>
+    </div>
+
+    <footer class="login-footer">
+        <a href="https://github.com/NicolasRenck" target="_blank" rel="noopener noreferrer">Github</a>
+        <span class="divider">|</span>
+        <a href="https://www.linkedin.com/in/nicolas-renck-75ba74232/" target="_blank" rel="noopener noreferrer">Linkedin</a>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        if (isAuthenticated()) {
+            window.location.href = 'dashboard.html'
+        }
+
+        document.getElementById('btn-login').addEventListener('click', async () => {
+            const username = document.getElementById('username').value
+            const password = document.getElementById('password').value
+            const error = document.getElementById('login-error')
+
+            error.style.display = 'none'
+
+            const ok = await login(username, password)
+
+            if (ok === false) {
+                error.style.display = 'block'
+            }
+        })
+
+        document.getElementById('password').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('btn-login').click()
+            }
+        })
+    </script>
+
+</body>
+</html>

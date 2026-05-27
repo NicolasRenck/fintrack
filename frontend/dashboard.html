@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack — Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="app-page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">FT</div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active" title="Dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+            </a>
+            <a href="transacoes.html" class="nav-item" title="Transações">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </a>
+            <a href="contas.html" class="nav-item" title="Contas Agendadas">
+                <i class="fa-solid fa-calendar-check"></i>
+            </a>
+            <a href="categorias.html" class="nav-item" title="Categorias">
+                <i class="fa-solid fa-tags"></i>
+            </a>
+        </nav>
+        <div class="sidebar-bottom">
+            <button class="nav-item" onclick="logout()" title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div>
+                <h1 class="greeting" id="greeting">Olá</h1>
+                <p class="greeting-sub">Aqui está o resumo das suas finanças</p>
+            </div>
+            <div class="header-right">
+                <select id="mes-select" class="mes-select"></select>
+                <button class="btn-new" onclick="exportarPDF()">
+                    <i class="fa-solid fa-file-pdf"></i> Exportar PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Cards de métrica -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Saldo</div>
+                <div class="metric-value" id="saldo">R$ —</div>
+                <div class="metric-sub">Balanço do mês</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Receitas</div>
+                <div class="metric-value green" id="receitas">R$ —</div>
+                <div class="metric-sub">Entradas no mês</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Despesas</div>
+                <div class="metric-value red" id="despesas">R$ —</div>
+                <div class="metric-sub">Saídas no mês</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Contas a vencer</div>
+                <div class="metric-value warning" id="contas-count">—</div>
+                <div class="metric-sub">Próximos 7 dias</div>
+            </div>
+        </div>
+
+        <!-- Bottom grid -->
+        <div class="bottom-grid">
+
+            <!-- Gastos por categoria -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Gastos por categoria</span>
+                </div>
+                <div id="categorias-list" class="categorias-list"></div>
+            </div>
+
+            <!-- Contas próximas -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Contas próximas</span>
+                    <span class="card-sub">Próximos 7 dias</span>
+                </div>
+                <div id="contas-proximas" class="contas-list"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

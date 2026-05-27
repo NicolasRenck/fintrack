@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack — Categorias</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="app-page">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">FT</div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" title="Dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+            </a>
+            <a href="transacoes.html" class="nav-item" title="Transações">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </a>
+            <a href="contas.html" class="nav-item" title="Contas Agendadas">
+                <i class="fa-solid fa-calendar-check"></i>
+            </a>
+            <a href="categorias.html" class="nav-item active" title="Categorias">
+                <i class="fa-solid fa-tags"></i>
+            </a>
+        </nav>
+        <div class="sidebar-bottom">
+            <button class="nav-item" onclick="logout()" title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="dashboard-header">
+            <div>
+                <h1 class="greeting">Categorias</h1>
+                <p class="greeting-sub">Organize seus gastos e receitas por categoria</p>
+            </div>
+            <button class="btn-new" onclick="abrirModal()">
+                <i class="fa-solid fa-plus"></i> Nova categoria
+            </button>
+        </div>
+
+        <div class="categorias-grid" id="categorias-grid">
+            <p class="empty">Carregando...</p>
+        </div>
+
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="fecharModalFora(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span class="modal-title" id="modal-title">Nova categoria</span>
+                <button class="modal-close" onclick="fecharModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <input type="hidden" id="categoria-id" />
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" id="nome" placeholder="Ex: Alimentação, Salário..." />
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select id="tipo">
+                    <option value="despesa">Despesa</option>
+                    <option value="receita">Receita</option>
+                </select>
+            </div>
+
+            <div class="modal-error" id="modal-error"></div>
+            <button class="btn-primary" onclick="salvarCategoria()">Salvar</button>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/categorias.js"></script>
+
+</body>
+</html>
