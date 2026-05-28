@@ -14,7 +14,7 @@ function logout() {
 }
 
 async function login(username, password) {
-    const response = await fetch('https://fintrack-api-flqh.onrender.com', {
+    const response = await fetch('https://fintrack-api-flqh.onrender.com/api/token/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

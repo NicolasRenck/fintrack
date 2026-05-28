@@ -6,9 +6,9 @@ Sistema web para controle de finanças pessoais. Permite registrar receitas e de
 
 | | URL |
 |---|---|
-| Frontend | `em breve` |
-| API | `em breve` |
-| API Docs | `em breve/api/docs/` |
+| Frontend | https://fintrackapi.netlify.app |
+| API | https://fintrack-api-flqh.onrender.com |
+| API Docs | https://fintrack-api-flqh.onrender.com/api/docs/ |
 
 **Acesso demo**
 
