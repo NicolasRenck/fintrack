@@ -9,4 +9,4 @@ class Command(BaseCommand):
             User.objects.create_user('demo', 'demo@fintrack.com', 'demofintrack123')
             self.stdout.write('Usuário demo criado com sucesso.')
         else:
-            self.stdout.write('Usuário demo já existe.')    
+            self.stdout.write('Usuário demo já existe.')
