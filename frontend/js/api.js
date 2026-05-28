@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8000/api'
+const BASE_URL = 'https://fintrack-api-flqh.onrender.com'
 
 async function request(endpoint, method = 'GET', body = null) {
     const token = localStorage.getItem('access_token')
