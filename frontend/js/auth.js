@@ -4,13 +4,13 @@ function isAuthenticated() {
 
 function requireAuth() {
     if (!isAuthenticated()) {
-        window.location.href = '/frontend/index.html'
+        window.location.href = '/index.html'
     }
 }
 
 function logout() {
     localStorage.clear()
-    window.location.href = '/frontend/index.html'
+    window.location.href = '/index.html'
 }
 
 async function login(username, password) {
@@ -24,7 +24,7 @@ async function login(username, password) {
         const data = await response.json()
         localStorage.setItem('access_token', data.access)
         localStorage.setItem('refresh_token', data.refresh)
-        window.location.href = '/frontend/dashboard.html'
+        window.location.href = '/dashboard.html'
     } else {
         return false
     }

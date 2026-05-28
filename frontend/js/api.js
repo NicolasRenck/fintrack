@@ -24,7 +24,7 @@ async function request(endpoint, method = 'GET', body = null) {
 
  if (response.status === 401) {
     localStorage.clear()
-    window.location.href = '/frontend/index.html'
+    window.location.href = '/index.html'
 }   
 
     return response
